@@ -1,4 +1,4 @@
-# Chapter 4
+# Chapter 8
 
 - `after-chapter-questions`
 - `notebook`

@@ -1,4 +1,4 @@
-# Chapter 6
+# Chapter 7
 
 - `after-chapter-questions`
     - temporarily empty
