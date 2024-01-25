@@ -2,5 +2,6 @@
 
 - `after-chapter-questions`
     - syn-lung-cancer-dataset
-- `notebook`
+- `notebooki`
+    - Neuron-and-DNN.ipynb
     - DNN-model-for-readmission-prediction.ipynb
