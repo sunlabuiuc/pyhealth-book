@@ -1,0 +1,241 @@
+2023-12-21 15:43:23 VAE(
+  (encoder1): Sequential(
+    (0): ResBlock2D(
+      (conv1): Conv2d(3, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ELU(alpha=1.0)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (downsample): Sequential(
+        (0): Conv2d(3, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (1): ResBlock2D(
+      (conv1): Conv2d(16, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ELU(alpha=1.0)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (downsample): Sequential(
+        (0): Conv2d(16, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (2): ResBlock2D(
+      (conv1): Conv2d(64, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ELU(alpha=1.0)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (maxpool): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (downsample): Sequential(
+        (0): Conv2d(64, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (mu): Linear(in_features=1024, out_features=256, bias=True)
+  (log_std2): Linear(in_features=1024, out_features=256, bias=True)
+  (decoder1): Sequential(
+    (0): ConvTranspose2d(256, 256, kernel_size=(5, 5), stride=(2, 2))
+    (1): ReLU()
+    (2): ConvTranspose2d(256, 128, kernel_size=(5, 5), stride=(2, 2))
+    (3): ReLU()
+    (4): ConvTranspose2d(128, 64, kernel_size=(5, 5), stride=(2, 2))
+    (5): ReLU()
+    (6): ConvTranspose2d(64, 32, kernel_size=(6, 6), stride=(2, 2))
+    (7): ReLU()
+    (8): ConvTranspose2d(32, 3, kernel_size=(6, 6), stride=(2, 2))
+    (9): Sigmoid()
+  )
+)
+2023-12-21 15:43:23 Metrics: ['kl_divergence', 'mse', 'mae']
+2023-12-21 15:43:23 Device: cuda:4
+2023-12-21 15:43:23 
+2023-12-21 15:43:23 Training:
+2023-12-21 15:43:23 Batch size: 256
+2023-12-21 15:43:23 Optimizer: <class 'torch.optim.adam.Adam'>
+2023-12-21 15:43:23 Optimizer params: {'lr': 0.001}
+2023-12-21 15:43:23 Weight decay: 0.0
+2023-12-21 15:43:23 Max grad norm: None
+2023-12-21 15:43:23 Val dataloader: <torch.utils.data.dataloader.DataLoader object at 0x7f45a6bc1bd0>
+2023-12-21 15:43:23 Monitor: kl_divergence
+2023-12-21 15:43:23 Monitor criterion: min
+2023-12-21 15:43:23 Epochs: 20
+2023-12-21 15:43:23 
+2023-12-21 15:44:26 --- Train epoch-0, step-67 ---
+2023-12-21 15:44:26 loss: 7853681.3489
+2023-12-21 15:44:37 --- Eval epoch-0, step-67 ---
+2023-12-21 15:44:37 kl_divergence: 0.1531
+2023-12-21 15:44:37 mse: 0.0000
+2023-12-21 15:44:37 mae: 0.0000
+2023-12-21 15:44:37 loss: 6813482.7778
+2023-12-21 15:44:37 New best kl_divergence score (0.1531) at epoch-0, step-67
+2023-12-21 15:44:37 
+2023-12-21 15:45:38 --- Train epoch-1, step-134 ---
+2023-12-21 15:45:38 loss: 7269614.4039
+2023-12-21 15:45:48 --- Eval epoch-1, step-134 ---
+2023-12-21 15:45:48 kl_divergence: 0.1448
+2023-12-21 15:45:48 mse: 0.0000
+2023-12-21 15:45:48 mae: 0.0000
+2023-12-21 15:45:48 loss: 6721105.7222
+2023-12-21 15:45:48 New best kl_divergence score (0.1448) at epoch-1, step-134
+2023-12-21 15:45:48 
+2023-12-21 15:46:49 --- Train epoch-2, step-201 ---
+2023-12-21 15:46:49 loss: 7193637.5196
+2023-12-21 15:47:00 --- Eval epoch-2, step-201 ---
+2023-12-21 15:47:00 kl_divergence: 0.0814
+2023-12-21 15:47:00 mse: 0.0000
+2023-12-21 15:47:00 mae: 0.0000
+2023-12-21 15:47:00 loss: 6604489.8750
+2023-12-21 15:47:00 New best kl_divergence score (0.0814) at epoch-2, step-201
+2023-12-21 15:47:00 
+2023-12-21 15:48:01 --- Train epoch-3, step-268 ---
+2023-12-21 15:48:01 loss: 7142792.3386
+2023-12-21 15:48:12 --- Eval epoch-3, step-268 ---
+2023-12-21 15:48:12 kl_divergence: 0.0750
+2023-12-21 15:48:12 mse: 0.0000
+2023-12-21 15:48:12 mae: 0.0000
+2023-12-21 15:48:12 loss: 6609193.9722
+2023-12-21 15:48:12 New best kl_divergence score (0.0750) at epoch-3, step-268
+2023-12-21 15:48:12 
+2023-12-21 15:49:10 --- Train epoch-4, step-335 ---
+2023-12-21 15:49:10 loss: 7118568.2015
+2023-12-21 15:49:18 --- Eval epoch-4, step-335 ---
+2023-12-21 15:49:18 kl_divergence: 0.0546
+2023-12-21 15:49:18 mse: 0.0000
+2023-12-21 15:49:18 mae: 0.0000
+2023-12-21 15:49:18 loss: 6568004.0833
+2023-12-21 15:49:18 New best kl_divergence score (0.0546) at epoch-4, step-335
+2023-12-21 15:49:18 
+2023-12-21 15:50:04 --- Train epoch-5, step-402 ---
+2023-12-21 15:50:04 loss: 7100631.7071
+2023-12-21 15:50:13 --- Eval epoch-5, step-402 ---
+2023-12-21 15:50:13 kl_divergence: 0.0584
+2023-12-21 15:50:13 mse: 0.0000
+2023-12-21 15:50:13 mae: 0.0000
+2023-12-21 15:50:13 loss: 6594770.8333
+2023-12-21 15:50:13 
+2023-12-21 15:50:58 --- Train epoch-6, step-469 ---
+2023-12-21 15:50:58 loss: 7079662.5933
+2023-12-21 15:51:07 --- Eval epoch-6, step-469 ---
+2023-12-21 15:51:07 kl_divergence: 0.0465
+2023-12-21 15:51:07 mse: 0.0000
+2023-12-21 15:51:07 mae: 0.0000
+2023-12-21 15:51:07 loss: 6533144.2361
+2023-12-21 15:51:07 New best kl_divergence score (0.0465) at epoch-6, step-469
+2023-12-21 15:51:07 
+2023-12-21 15:51:51 --- Train epoch-7, step-536 ---
+2023-12-21 15:51:51 loss: 7060642.8265
+2023-12-21 15:52:00 --- Eval epoch-7, step-536 ---
+2023-12-21 15:52:00 kl_divergence: 0.0542
+2023-12-21 15:52:00 mse: 0.0000
+2023-12-21 15:52:00 mae: 0.0000
+2023-12-21 15:52:00 loss: 6531832.1250
+2023-12-21 15:52:00 
+2023-12-21 15:52:45 --- Train epoch-8, step-603 ---
+2023-12-21 15:52:45 loss: 7057253.8116
+2023-12-21 15:52:53 --- Eval epoch-8, step-603 ---
+2023-12-21 15:52:53 kl_divergence: 0.0484
+2023-12-21 15:52:53 mse: 0.0000
+2023-12-21 15:52:53 mae: 0.0000
+2023-12-21 15:52:53 loss: 6521821.5972
+2023-12-21 15:52:53 
+2023-12-21 15:53:37 --- Train epoch-9, step-670 ---
+2023-12-21 15:53:37 loss: 7040469.0168
+2023-12-21 15:53:45 --- Eval epoch-9, step-670 ---
+2023-12-21 15:53:45 kl_divergence: 0.0419
+2023-12-21 15:53:45 mse: 0.0000
+2023-12-21 15:53:45 mae: 0.0000
+2023-12-21 15:53:45 loss: 6500187.3194
+2023-12-21 15:53:45 New best kl_divergence score (0.0419) at epoch-9, step-670
+2023-12-21 15:53:45 
+2023-12-21 15:54:29 --- Train epoch-10, step-737 ---
+2023-12-21 15:54:29 loss: 7034561.5196
+2023-12-21 15:54:37 --- Eval epoch-10, step-737 ---
+2023-12-21 15:54:37 kl_divergence: 0.0423
+2023-12-21 15:54:37 mse: 0.0000
+2023-12-21 15:54:37 mae: 0.0000
+2023-12-21 15:54:37 loss: 6508993.3333
+2023-12-21 15:54:37 
+2023-12-21 15:55:21 --- Train epoch-11, step-804 ---
+2023-12-21 15:55:21 loss: 7028912.4543
+2023-12-21 15:55:29 --- Eval epoch-11, step-804 ---
+2023-12-21 15:55:29 kl_divergence: 0.0338
+2023-12-21 15:55:29 mse: 0.0000
+2023-12-21 15:55:29 mae: 0.0000
+2023-12-21 15:55:29 loss: 6510866.0417
+2023-12-21 15:55:29 New best kl_divergence score (0.0338) at epoch-11, step-804
+2023-12-21 15:55:29 
+2023-12-21 15:56:12 --- Train epoch-12, step-871 ---
+2023-12-21 15:56:12 loss: 7027013.5933
+2023-12-21 15:56:20 --- Eval epoch-12, step-871 ---
+2023-12-21 15:56:20 kl_divergence: 0.0437
+2023-12-21 15:56:20 mse: 0.0000
+2023-12-21 15:56:20 mae: 0.0000
+2023-12-21 15:56:20 loss: 6491712.3194
+2023-12-21 15:56:20 
+2023-12-21 15:57:04 --- Train epoch-13, step-938 ---
+2023-12-21 15:57:04 loss: 7018141.4291
+2023-12-21 15:57:12 --- Eval epoch-13, step-938 ---
+2023-12-21 15:57:12 kl_divergence: 0.0470
+2023-12-21 15:57:12 mse: 0.0000
+2023-12-21 15:57:12 mae: 0.0000
+2023-12-21 15:57:12 loss: 6505837.5139
+2023-12-21 15:57:12 
+2023-12-21 15:57:57 --- Train epoch-14, step-1005 ---
+2023-12-21 15:57:57 loss: 7018323.3498
+2023-12-21 15:58:05 --- Eval epoch-14, step-1005 ---
+2023-12-21 15:58:05 kl_divergence: 0.0527
+2023-12-21 15:58:05 mse: 0.0000
+2023-12-21 15:58:05 mae: 0.0000
+2023-12-21 15:58:05 loss: 6499927.8889
+2023-12-21 15:58:05 
+2023-12-21 15:58:49 --- Train epoch-15, step-1072 ---
+2023-12-21 15:58:49 loss: 7012684.5364
+2023-12-21 15:58:57 --- Eval epoch-15, step-1072 ---
+2023-12-21 15:58:57 kl_divergence: 0.0354
+2023-12-21 15:58:57 mse: 0.0000
+2023-12-21 15:58:57 mae: 0.0000
+2023-12-21 15:58:57 loss: 6472468.5972
+2023-12-21 15:58:57 
+2023-12-21 15:59:40 --- Train epoch-16, step-1139 ---
+2023-12-21 15:59:40 loss: 7009036.7724
+2023-12-21 15:59:48 --- Eval epoch-16, step-1139 ---
+2023-12-21 15:59:48 kl_divergence: 0.0327
+2023-12-21 15:59:48 mse: 0.0000
+2023-12-21 15:59:48 mae: 0.0000
+2023-12-21 15:59:48 loss: 6488543.6111
+2023-12-21 15:59:48 New best kl_divergence score (0.0327) at epoch-16, step-1139
+2023-12-21 15:59:48 
+2023-12-21 16:00:35 --- Train epoch-17, step-1206 ---
+2023-12-21 16:00:35 loss: 7007894.7985
+2023-12-21 16:00:43 --- Eval epoch-17, step-1206 ---
+2023-12-21 16:00:43 kl_divergence: 0.0428
+2023-12-21 16:00:43 mse: 0.0000
+2023-12-21 16:00:43 mae: 0.0000
+2023-12-21 16:00:43 loss: 6477742.8194
+2023-12-21 16:00:43 
+2023-12-21 16:01:28 --- Train epoch-18, step-1273 ---
+2023-12-21 16:01:28 loss: 6998958.7080
+2023-12-21 16:01:36 --- Eval epoch-18, step-1273 ---
+2023-12-21 16:01:36 kl_divergence: 0.0374
+2023-12-21 16:01:36 mse: 0.0000
+2023-12-21 16:01:36 mae: 0.0000
+2023-12-21 16:01:36 loss: 6475522.2083
+2023-12-21 16:01:36 
+2023-12-21 16:02:21 --- Train epoch-19, step-1340 ---
+2023-12-21 16:02:21 loss: 6998535.8526
+2023-12-21 16:02:30 --- Eval epoch-19, step-1340 ---
+2023-12-21 16:02:30 kl_divergence: 0.0323
+2023-12-21 16:02:30 mse: 0.0000
+2023-12-21 16:02:30 mae: 0.0000
+2023-12-21 16:02:30 loss: 6478588.5000
+2023-12-21 16:02:30 New best kl_divergence score (0.0323) at epoch-19, step-1340
+2023-12-21 16:02:30 Loaded best model

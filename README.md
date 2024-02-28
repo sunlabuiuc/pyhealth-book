@@ -8,3 +8,4 @@ Materials about the textbook "Deep learning for healthcare - practitioner’s gu
 - [x] Chapter 5: attention mechanism
 - [x] Chapter 6: transformer
 - [x] Chapter 7: graph neural networks
+- [x] Chapter 8: generative models
