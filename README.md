@@ -2,6 +2,9 @@
 Materials about the textbook "Deep learning for healthcare - practitioner’s guide"
 
 ## Environment setup guide
+- Jupyter Notebook setup
+- VSCode + Curser
+- Codelab
 
 ## Contents that are ready
 - [x] Chapter 2: deep neural networks
